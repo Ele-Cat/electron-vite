@@ -1,19 +1,50 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.png?asset'
+import icon from '../../resources/logo.png?asset'
+import defaultSettings from '../renderer/src/config/defaultSettings'
+const {
+  titleBarText,
+  defaultWidth,
+  defaultHeight,
+  defaultMinWidth,
+  defaultMinHeight,
+  showTitleBar, 
+  showMenuBar,
+  resizable,
+  movable,
+  fullscreenable,
+  alwaysOnTop,
+  hasShadow,
+  skipTaskbar,
+} = defaultSettings
 
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
-    show: false,
-    autoHideMenuBar: true,
-    ...(process.platform === 'linux' ? { icon } : {}),
+    title: titleBarText,
+    width: defaultWidth,
+    height: defaultHeight,
+    minWidth: defaultMinWidth,
+    minHeight: defaultMinHeight,
+    frame: showTitleBar, // 隐藏默认的窗口边框
+    autoHideMenuBar: !showMenuBar,
+    resizable: resizable, // 允许用户调整窗口大小
+    movable: movable, // 允许用户拖动窗口
+    fullscreenable: fullscreenable, // 允许用户全屏显示
+    alwaysOnTop: alwaysOnTop, // 始终保持在其他窗口的顶部
+    hasShadow: hasShadow, // 是否显示窗口阴影
+    skipTaskbar: skipTaskbar, // 隐藏任务栏图标
+    ...(process.platform !== 'darwin' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
+    },
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      color: 'rgba(0,0,0,0)', // 透明背景（仅 Windows）
+      symbolColor: '#ffffff',   // 按钮颜色（仅 Windows）
+      height: 35                // 控制按钮区域高度（跨平台）
     }
   })
 

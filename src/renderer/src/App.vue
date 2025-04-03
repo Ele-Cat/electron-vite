@@ -1,8 +1,10 @@
 <script setup>
-import { message } from 'ant-design-vue'
-import Versions from './components/Versions.vue'
-
-const ipcHandle = () => window.electron.ipcRenderer.send('ping')
+import { message, theme } from 'ant-design-vue'
+import { storeToRefs } from "pinia";
+import useStore from '@/store'
+const { useSystemStore } = useStore();
+const { primaryColor } = storeToRefs(useSystemStore)
+import TitleBar from '@/layouts/titleBar/Index.vue'
 
 const tip = () => {
   message.info('Hello, Ant Design Vue!')
@@ -10,28 +12,38 @@ const tip = () => {
 </script>
 
 <template>
-  <div style="position: fixed;top: 0;left: 0;">
-    <a-button type="primary" @click="tip">123</a-button>
-    <router-link to="/">Home</router-link>
-    <router-link to="/about">About</router-link>
-    <router-link to="/mine">Mine</router-link>
-  </div>
-  <router-view></router-view>
-  
-  <img alt="logo" class="logo" src="./assets/electron.svg" />
-  <div class="creator">Powered by electron-vite</div>
-  <div class="text">
-    Build an Electron app with
-    <span class="vue">Vue</span>
-  </div>
-  <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
-  <div class="actions">
-    <div class="action">
-      <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">Documentation</a>
+  <a-config-provider
+    :theme="{
+      token: {
+        colorPrimary: primaryColor,
+        algorithm: theme.compactAlgorithm,
+      },
+    }"
+  >
+    <TitleBar />
+    <div class="main-box">
+      <a-button type="primary" @click="tip">123</a-button>
+      <router-link to="/">Home</router-link>
+      <router-link to="/about">About</router-link>
+      <router-link to="/mine">Mine</router-link>
+      <router-view></router-view>
     </div>
-    <div class="action">
-      <a target="_blank" rel="noreferrer" @click="ipcHandle">Send IPC</a>
-    </div>
-  </div>
-  <Versions />
+  </a-config-provider>
 </template>
+
+<style>
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.titlebar {
+}
+
+.main-box {
+  overflow: auto;
+  flex: 1;
+}
+</style>

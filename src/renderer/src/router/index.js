@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import defaultSettings from '@/config/defaultSettings';
 
 // 导入组件（推荐使用懒加载）
-const Home = () => import('../views/Home.vue');
-const About = () => import('../views/About.vue');
+const Home = () => import('@/views/Home.vue');
+const About = () => import('@/views/About.vue');
 
 // 定义路由规则
 const routes = [
@@ -35,7 +36,7 @@ const router = createRouter({
 
 // 全局路由守卫示例
 router.beforeEach((to, from) => {
-  document.title = to.meta.title || '默认标题'; // 动态设置页面标题
+  document.title = !defaultSettings.showTitleBarText ? '' : to.meta.title ? `${defaultSettings.titleBarText} - ${to.meta.title}` : defaultSettings.titleBarText; // 动态设置页面标题
 });
 
 export default router;

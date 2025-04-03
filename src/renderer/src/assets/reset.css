@@ -1,0 +1,31 @@
+/* 
+http://www.cnblogs.com/ele-cat Reset Stylesheet
+v1.0.1 
+2018-05-08
+Author: Ele-cat - http://ele-cat.github.io
+*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,figure,figcaption{padding: 0;margin: 0;}
+p {line-height: 1;}
+table {border-collapse: collapse;border-spacing: 0;}
+fieldset,img {border: 0;max-width: 100%;}
+address,caption,cite,code,dfn,em,strong,th,var {font-weight: normal;font-style: normal;}
+ol,ul {list-style: none;}
+caption,th {text-align: left;}
+h1,h2,h3,h4,h5,h6 {font-weight: normal;font-size: 100%;}
+q:before,q:after {content:'';}
+abbr,acronym {border: 0;font-variant:normal;}
+a{text-decoration: none;transition:all .4s ease-in-out;}
+sup,sub{vertical-align:baseline;}
+legend{color:#000;}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+input,button,textarea,select{font-size:100%;outline:none;resize:none;}
+:-moz-placeholder {color: #ccc;}
+::-moz-placeholder {color: #ccc;}
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #ccc;}
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #ccc;}
+.fl{float: left;}
+.fr{float: right;}
+/*兼容IE6/7*/
+.cl {zoom: 1;} 
+.cl:before,.cl:after{display: table;line-height: 0;content: "";} 
+.cl:after {clear: both;}

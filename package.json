@@ -23,6 +23,8 @@
     "@electron-toolkit/utils": "^4.0.0",
     "ant-design-vue": "4.x",
     "electron-updater": "^6.3.9",
+    "pinia": "^3.0.1",
+    "pinia-plugin-persist": "^1.0.0",
     "vue-router": "^4.0.13"
   },
   "devDependencies": {
