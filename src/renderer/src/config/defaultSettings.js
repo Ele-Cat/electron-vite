@@ -12,6 +12,7 @@ const defaultSettings = {
   defaultMinHeight: 500, // 默认最小高度
   showTitleBar: false, // 显示标题栏
   showTitleBarText: true, // 显示标题
+  showTitleBarIcon: true, // 显示图标
   titleBarText: 'Electron Vite', // 标题
   showMenuBar: false, // 显示菜单栏
   resizable: true, // 是否可缩放

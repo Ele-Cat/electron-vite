@@ -31,19 +31,19 @@ const tip = () => {
   </a-config-provider>
 </template>
 
-<style>
+<style lang="less">
 #app {
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
-}
 
-.titlebar {
-}
+  .titlebar {
+  }
 
-.main-box {
-  overflow: auto;
-  flex: 1;
+  .main-box {
+    overflow: auto;
+    flex: 1;
+  }
 }
 </style>
