@@ -1,5 +1,4 @@
 <template>
-  Home
   <a-space>
     {{ count }}
     <a-button size="small" type="primary" @click="changeCount(1)">+1</a-button>
